@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Infoscreen</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js" type="module"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="area"></div>
+        <script id="template" type="text/template">
+            <div id="container">
+                <div id="clock">
+                    <div id="date">{{ clock.date }}</div>
+                    <div id="time">{{ clock.time }}</div>
+                    <div id="sun">
+                        {{#icon}}sunrise{{/icon}}
+                        <span>{{ clock.sunrise }}</span>
+                        <span id="sun-separator"></span>
+                        {{#icon}}sunset{{/icon}}
+                        <span>{{ clock.sunset }}</span>
+                    </div>
+                </div>
+                <div id="bikes">
+                    {{#icon}}bike{{/icon}}
+                    <ul>
+                    {{#stations}}
+                    <li><span class="name">{{ name }}</span> <span class="count">{{ bikes }} / {{ capacity }}</span></li>
+                    {{/stations}}
+                </div>
+                <div id="trams">
+                    <ul>
+                    {{#trams}}
+                    <li>
+                        {{#icon}}tram{{/icon}}
+                        <span class="route">{{ route }}</span>
+                        <span class="headsign">{{ headsign }}</span>
+                        <span class="time">{{ departure }}</span>
+                        <span class="delay">{{ delay }}</span>
+                    </li>
+                    {{/trams}}
+                    </ul>
+                </div>
+                <div id="weather">
+                    <div id="today">
+                        <div class="details">
+                            <span class="icon">{{#icon}}{{ weather.today.weathericon }}{{/icon}}</span>
+                            <span class="temperature">{{ weather.today.temperature }} °C</span>
+                            <span class="description">{{ weather.today.description }}</span>
+                        </div>
+                        <div class="summary">{{ weather.today.summary }}</div>
+                    </div>
+
+                    <table id="hourly">
+                        {{#weather.hourly}}
+                        <tr>
+                            <td class="time">{{ time }}</td>
+                            <td class="icon">{{#icon}}{{ weathericon }}{{/icon}}</td>
+                            <td class="temperature">{{ temperature }} °C</td>
+                            <td class="description">{{ description }}</td>
+                            <td class="wind">{{ wind }} m/s</td>
+                            <td class="winddirection">{{#icon}}winddirection {{wind_deg}}{{/icon}}</td>
+                        </tr>
+                        {{/weather.hourly}}
+                    </table>
+
+                    <div id="daily">
+                        <ul>
+                        {{#weather.daily}}
+                        <li>
+                            <div class="details">
+                                <span class="day">{{ day }}</span>
+                                <span class="icon">{{#icon}}{{ weathericon }}{{/icon}}</span>
+                                <span class="temperature">{{ temperature }} °C</span>
+                                <span class="description">{{ description }}</span>
+                            </div>
+                            <!--
+                            <div class="summary">{{ summary }}</div>
+                            -->
+                        </li>
+                        {{/weather.daily}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="gym">
+                    <ul>
+                        <li>
+                            <div class="info">
+                                <div id="workoutday">{{gym.day}}</div>
+                                {{#icon}}gym{{/icon}}
+                            </div>
+                        </li>
+                        {{#gym.workouts}}
+                        <li class="workout">
+                            <h2>{{ name }}</h2>
+                            <p>{{{ description }}}</p>
+
+                        </li>
+                        {{/gym.workouts}}
+                    </ul>
+                </div>
+            </div>
+        </script>
+        <script type="text/javascript">
+globalThis.data = $DATA;
+console.log("Data:", globalThis.data);
+        </script>
+        <script src="data.js" type="module"></script>
+    </body>
+</html>

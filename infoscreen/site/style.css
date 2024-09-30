@@ -1,0 +1,368 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap');
+
+* {
+    font-family: 'Mukta', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #eeeeee;
+}
+
+#area {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 1200px;
+    height: 825px;
+    border-right: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+    z-index: 1;
+}
+
+#container {
+    position: absolute;
+    z-index: 10;
+    width: 1180px;
+    height: 805px;
+    display: grid;
+
+    margin: 10px 0 0 10px;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+        "clock weather"
+        "clock weather"
+        "clock weather"
+        "bikes weather"
+        "trams weather"
+        "trams gym"
+        "trams gym"
+        "trams gym";
+
+    gap: 10px;
+}
+
+#container > div {
+    border: 1px solid #888888;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#clock {
+    grid-area: clock;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock #date {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1;
+}
+
+#clock #time {
+    font-size: 8em;
+    text-align: center;
+    line-height: 1;
+}
+
+#clock #sun {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock svg {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+#clock span {
+    display: block;
+    font-size: 1.5em;
+}
+
+#clock #sun-separator {
+    margin: 0 10px;
+}
+
+#bikes {
+    grid-area: bikes;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#bikes svg {
+    width: 80px;
+    height: 80px;
+}
+
+#bikes ul {
+    list-style: none;
+}
+
+#bikes li {
+    font-size: 1.5em;
+}
+
+#bikes .name {
+    display: inline-block;
+    width: 240px;
+}
+
+#bikes .count {
+    font-weight: bold;
+}
+
+#bikes li {
+    display: block;
+}
+
+#weather {
+    grid-area: weather;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather #today .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather #today .details span {
+    font-size: 4em;
+    line-height: 1;
+    display: inline-block;
+}
+
+#weather #today .details span.description {
+    font-size: 2em;
+    line-height: 1;
+}
+
+#weather #today .temperature {
+    margin: 0 40px 0 20px;
+}
+
+#weather #today svg {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+#weather #today .wind {
+    margin-right: 20px;
+}
+
+#weather #today #current svg {
+    width: 100px;
+    height: 100px;
+}
+
+#weather #today .summary {
+    font-size: 1.5em;
+    margin: 0 20px 10px 20px;
+    line-height: 1;
+    text-align: center;
+}
+
+#weather #hourly {
+    border-collapse: collapse;
+}
+
+#weather #hourly td {
+    padding: 1px 10px;
+    font-size: 1.3em;
+    vertical-align: middle;
+}
+
+#weather #hourly tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+#weather #hourly img {
+    display: block;
+}
+
+#weather #hourly .icon svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+#weather #hourly .time, #weather #hourly .temperature, #weather #hourly .wind {
+    text-align: right;
+}
+
+#weather #hourly .winddirection svg {
+    width: 25px;
+    height: 25px;
+    vertical-align:middle;
+}
+
+#weather #daily ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+#weather #daily li {
+    padding: 0px;
+}
+
+#weather #daily li .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather #daily .details {
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+#weather #daily .details span {
+    display: block;
+    margin: 0 10px;
+    padding: 0;
+}
+
+#weather #daily .details svg {
+    width: 35px;
+    height: 35px;
+}
+
+#weather #daily .summary {
+    font-size: 1.5em;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#trams {
+    grid-area: trams;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#trams ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 10px;
+}
+
+#trams li {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+#trams li span, #trams li svg {
+    font-size: 1.5em;
+    display: block;
+}
+
+#trams li svg {
+    width: 40px;
+    height: 40px;
+}
+
+#trams li .route {
+    color: #ffffff;
+    background: #000000;
+    margin: 5px 10px;
+    border-radius: 10px;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#trams li .headsign {
+    width: 220px;
+}
+
+#trams li .delay {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#gym {
+    grid-area: gym;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#gym svg {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+}
+
+#gym .info {
+    display: block;
+    background: #eeeeee;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+#gym #workoutday {
+    font-size: 2em;
+    text-align: center;
+}
+
+#gym ul {
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+#gym li.workout {
+    margin-left: 20px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+#gym li h2, #gym li p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    line-height: 1.3;
+}
+
+.done {
+    position:absolute;
+    top: 10;
+    left: 10;
+    width: 10px;
+    height: 10px;
+    z-index: 100;
+}
